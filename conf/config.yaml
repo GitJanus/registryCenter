@@ -1,0 +1,90 @@
+#config.yaml
+#服务信息
+server:
+  #服务id
+  id: proxyServer
+  #服务名
+  serviceName: proxyServer
+  #域
+  domain: tass.com.cn
+  #服务提供者的IP
+  ip: 127.0.0.1
+  #服务提供者的端口
+  port: 8888
+  #请求超时时间，单位是s
+  timeOut: 10
+  #第三方服务端口
+  clusterPort: 8019
+  #通信方式 0：明文 1：单向ssl 2：双向ssl
+  communication: 0
+  #DB
+dataSource:
+  #数据库类型
+  dbType: sqlite3
+  #数据库存放位置
+  url: ./proxyDB.db
+  #调用的服务（v1不用，保留）
+remoteServer:
+  #远程调用的服务名代理服务
+  keySynServer:
+    id: keySynServer
+    serviceName: keySynServer
+    domain: tass.com.cn
+    ip: 127.0.0.1
+    port: 8019
+    timeOut: 10
+#hsm setting
+hsmServer:
+  #请求超时时间，单位是s
+  timeout: 10
+#文件日志配置
+fileLog:
+  info:
+    #保留最近天数
+    lastdays: 10
+    #单个文件大小(M)
+    filesize: 2
+    #0:关闭 1：启用
+    status: 1
+    #日志名称
+    filename: info
+    #日志路径
+    filepath: logs
+  error:
+    #保留最近天数
+    lastdays: 10
+    #单个文件大小(M)
+    filesize: 2
+    #0:关闭 1：启用
+    status: 1
+    #日志名称
+    filename: error
+    #日志路径
+    filepath: logs
+  debug:
+    #保留最近天数
+    lastdays: 10
+    #单个文件大小(M)
+    filesize: 2
+    #0:关闭 1：启用
+    status: 1
+    #日志名称
+    filename: debug
+    #日志路径
+    filepath: logs
+  temp:
+    #保留最近小时
+    lastdays: 1
+    #单个文件大小(M)
+    filesize: 100
+    #0:关闭 1：启用
+    status: 0
+    #日志名称
+    filename: temp
+    #日志路径
+    filepath: logs
+#证书配置
+certificateConfig:
+  serverCert: cert/server.p12
+  serverPass: 123456
+  clientCert: cert/ca.crt

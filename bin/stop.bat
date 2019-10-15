@@ -1,0 +1,1 @@
+taskkill /im registryCenter.exe /f
